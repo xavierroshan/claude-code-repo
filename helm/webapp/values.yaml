@@ -1,0 +1,24 @@
+# Default values for webapp.
+replicaCount: 1
+
+image:
+  repository: httpd
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+nameOverride: webapp
+fullnameOverride: my-webapp
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: webapp
+  labels:
+    app: <value from your task>
+    tier: <value from your task>
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30080
